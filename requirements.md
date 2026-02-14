@@ -65,18 +65,18 @@ Students and beginner developers struggle with understanding technical concepts,
 
 ---
 
-### 4. AI Quiz Generator
-**As a** student wanting to test my learning  
-**I want** AI to generate topic-based MCQs and practice quizzes  
-**So that** I can self-assess my understanding and prepare for exams
+### 4. AI Viva & Interview Question Generator
+**As a** student preparing for viva or interviews  
+**I want** AI to generate relevant technical questions with answers  
+**So that** I can practice and prepare effectively for exams and interviews
 
 **Acceptance Criteria:**
-- 4.1 User can specify topic/subject for quiz generation
-- 4.2 System generates 5-10 MCQs per quiz with 4 options each
+- 4.1 User can specify topic/subject for question generation
+- 4.2 System generates 5-10 relevant questions per request
 - 4.3 Questions vary in difficulty (easy/medium/hard)
-- 4.4 User can submit answers and get instant scoring
-- 4.5 AI provides explanations for correct answers
-- 4.6 User can regenerate quizzes for more practice
+- 4.4 AI provides detailed model answers for generated questions
+- 4.5 User can regenerate questions for more practice
+- 4.6 Questions include both conceptual and practical types
 
 ---
 

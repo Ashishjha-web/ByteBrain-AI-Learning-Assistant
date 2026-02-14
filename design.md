@@ -193,52 +193,40 @@ Provide a {length} summary highlighting key technical concepts.
 
 ---
 
-### 4. AI Quiz Generator
+### 4. AI Viva & Interview Question Generator
 
 **User Flow:**
-1. User selects "Quiz Generator" feature
+1. User selects "Viva & Interview Questions" feature
 2. User enters topic/subject
 3. User selects difficulty level and number of questions
-4. System generates MCQ quiz using LLM
-5. User answers questions interactively
-6. System evaluates answers and shows score
-7. Explanations provided for each answer
+4. System generates questions using LLM
+5. Questions displayed with detailed model answers
+6. User can reveal/hide answers for self-practice
+7. User can regenerate for more practice
 
 **API Endpoint:**
 ```
-POST /api/quiz/generate
+POST /api/questions/generate
 Body: {
   "topic": "Data Structures",
   "difficulty": "medium",
   "count": 10
 }
 Response: {
-  "quiz_id": "abc123",
   "questions": [
     {
       "id": 1,
-      "question": "What is the time complexity of binary search?",
-      "options": ["O(n)", "O(log n)", "O(n^2)", "O(1)"],
-      "correct_answer": 1,
-      "explanation": "Binary search divides the search space in half..."
-    }
-  ]
-}
-
-POST /api/quiz/submit
-Body: {
-  "quiz_id": "abc123",
-  "answers": [1, 2, 0, 3, ...]
-}
-Response: {
-  "score": 8,
-  "total": 10,
-  "percentage": 80,
-  "results": [
+      "question": "Explain the difference between stack and queue data structures.",
+      "answer": "A stack follows LIFO (Last In First Out) principle...",
+      "difficulty": "medium",
+      "type": "conceptual"
+    },
     {
-      "question_id": 1,
-      "correct": true,
-      "explanation": "..."
+      "id": 2,
+      "question": "Write a function to reverse a linked list.",
+      "answer": "def reverse_linked_list(head):\n    prev = None...",
+      "difficulty": "medium",
+      "type": "practical"
     }
   ]
 }
@@ -246,15 +234,19 @@ Response: {
 
 **Prompt Template:**
 ```
-Generate {count} multiple-choice questions on: {topic}
+Generate {count} viva and interview questions on: {topic}
 Difficulty: {difficulty}
-For each question:
-1. Create a clear, specific question
-2. Provide 4 options (A, B, C, D)
-3. Mark the correct answer
-4. Include a brief explanation
+Include a mix of:
+1. Conceptual questions (theory, definitions, comparisons)
+2. Practical questions (coding problems, implementation)
 
-Format as JSON with question, options array, correct_answer_index, and explanation.
+For each question:
+- Provide a clear, specific question
+- Include a detailed model answer
+- Mark difficulty level
+- Specify question type (conceptual/practical)
+
+Format as JSON with question, answer, difficulty, and type fields.
 ```
 
 ---
@@ -265,7 +257,7 @@ Format as JSON with question, options array, correct_answer_index, and explanati
 
 **Homepage:**
 - Hero section with project title and tagline
-- Four feature cards (Tutor, Debug, Summarize, Quiz)
+- Four feature cards (Tutor, Debug, Summarize, Viva Questions)
 - Simple navigation
 
 **Feature Pages:**
@@ -297,7 +289,7 @@ Format as JSON with question, options array, correct_answer_index, and explanati
 1. Implement AI Learning Tutor
 2. Implement Code Debug Assistant
 3. Implement Notes Summarizer
-4. Implement Quiz Generator with scoring
+4. Implement Viva & Interview Question Generator
 5. Connect frontend to backend APIs
 
 ### Phase 3: Integration & Testing (Day 2)
@@ -393,7 +385,8 @@ def get_ai_response(prompt):
 - Integration with GitHub for code review
 - PDF/document upload support
 - Multi-language code translation
-- Adaptive quizzes based on student performance
+- Interactive MCQ quizzes with scoring
+- Adaptive question difficulty based on student performance
 
 ---
 
